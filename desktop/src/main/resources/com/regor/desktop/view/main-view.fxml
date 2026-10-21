@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.regor.desktop.controller.MainController" styleClass="app-root">
+    <left>
+        <VBox prefWidth="256" spacing="24" styleClass="sidebar">
+            <Label text="Regor" styleClass="brand"/>
+            <Label text="Desktop" styleClass="section-label"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Fechar" onAction="#closeApplication" maxWidth="Infinity" styleClass="secondary-button"/>
+        </VBox>
+    </left>
+    <center>
+        <VBox alignment="CENTER_LEFT" spacing="16" styleClass="content">
+            <Label text="Bem-vindo ao Regor" styleClass="page-title"/>
+            <Label text="Uma nova experiência desktop está em preparação." wrapText="true" styleClass="muted-text"/>
+        </VBox>
+    </center>
+</BorderPane>

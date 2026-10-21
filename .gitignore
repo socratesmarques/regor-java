@@ -1,0 +1,6 @@
+/desktop/target/
+/backend/target/
+/desktop/.env
+/backend/.env
+/.idea/
+*.iml
