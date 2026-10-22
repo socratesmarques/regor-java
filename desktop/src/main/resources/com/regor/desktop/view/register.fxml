@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.regor.desktop.controller.AuthController" fitToWidth="true" styleClass="landing">
+<content><VBox alignment="CENTER" spacing="20" styleClass="hero">
+<Label text="♥  Regor" styleClass="brand"/>
+<VBox maxWidth="460" spacing="10" styleClass="auth-card">
+<Label text="Criar conta" styleClass="page-title"/><Label text="Comece sua próxima conexão" styleClass="muted-text"/>
+<Label text="Nome" styleClass="field-label"/><TextField fx:id="displayName" promptText="Seu nome"/><Label text="Usuário" styleClass="field-label"/><TextField fx:id="username" promptText="usuario"/>
+<Label text="E-mail" styleClass="field-label"/><TextField fx:id="email" promptText="seu@email.com"/>
+<Label text="Data de nascimento · somente maiores de 18 anos" styleClass="field-label"/><DatePicker fx:id="birthDate" maxWidth="Infinity"/>
+<Label text="Senha · de 10 a 72 caracteres" styleClass="field-label"/><PasswordField fx:id="password" promptText="Crie uma senha"/>
+<Label text="Confirmar senha" styleClass="field-label"/><PasswordField fx:id="confirmation" promptText="Repita a senha"/><Label fx:id="status" wrapText="true" styleClass="status"/>
+<Button fx:id="submit" text="Criar minha conta" onAction="#register" maxWidth="Infinity" styleClass="primary-button"/>
+<Hyperlink text="Já tem conta? Entrar" onAction="#openLogin"/>
+</VBox></VBox></content></ScrollPane>

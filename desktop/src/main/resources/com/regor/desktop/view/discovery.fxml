@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.regor.desktop.controller.DiscoveryController" styleClass="page">
+<top><VBox spacing="16" styleClass="page-header"><HBox alignment="CENTER_LEFT"><Label text="Descobrir Pessoas" styleClass="page-title"/><Region HBox.hgrow="ALWAYS"/><Label fx:id="count" styleClass="muted-text"/></HBox>
+<HBox spacing="10"><TextField fx:id="query" promptText="Buscar por nome, música, culinária..." onAction="#search" HBox.hgrow="ALWAYS"/><Button fx:id="search" text="Buscar" onAction="#search" styleClass="primary-button"/></HBox>
+<Label fx:id="status" wrapText="true" styleClass="status"/></VBox></top>
+<center><ScrollPane fitToWidth="true"><content><FlowPane fx:id="cards" hgap="20" vgap="20" styleClass="content"/></content></ScrollPane></center>
+<right><VBox prefWidth="220" spacing="12" styleClass="side-panel"><Label text="Filtros de descoberta" styleClass="card-title"/>
+<Label text="Idade mínima" styleClass="field-label"/><Spinner fx:id="minAge"/>
+<Label text="Idade máxima" styleClass="field-label"/><Spinner fx:id="maxAge"/>
+<Label text="Distância máxima (km)" styleClass="field-label"/><TextField fx:id="distance" promptText="Opcional"/><Label text="Localização" styleClass="field-label"/><TextField fx:id="cityField" promptText="Cidade"/>
+<Label text="Interesse" styleClass="field-label"/><TextField fx:id="interest" promptText="Música, cinema..."/><Label text="Gênero" styleClass="field-label"/><TextField fx:id="gender" promptText="Todos"/>
+<Label text="A distância usa as coordenadas informadas no seu perfil." wrapText="true" styleClass="muted-text"/>
+<Button text="Aplicar filtros" onAction="#search" styleClass="primary-button"/>
+</VBox></right>
+<bottom><HBox alignment="CENTER" spacing="16" styleClass="pagination"><Button fx:id="previous" text="Anterior" onAction="#previous" styleClass="secondary-button"/><Button fx:id="next" text="Próxima" onAction="#next" styleClass="secondary-button"/></HBox></bottom>
+</BorderPane>

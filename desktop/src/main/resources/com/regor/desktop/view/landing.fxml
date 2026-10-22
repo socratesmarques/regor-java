@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.regor.desktop.controller.LandingController" styleClass="landing">
+<top><HBox alignment="CENTER_LEFT" spacing="20" styleClass="landing-header"><Label text="♥  Regor" styleClass="brand"/><Region HBox.hgrow="ALWAYS"/><Button text="Criar Conta" onAction="#register" styleClass="secondary-button"/></HBox></top>
+<center><ScrollPane fitToWidth="true" styleClass="transparent"><content>
+<VBox alignment="CENTER" spacing="16" styleClass="hero">
+<VBox alignment="CENTER" maxWidth="760" spacing="16" styleClass="hero-card">
+<Label text="●  NOVA EXPERIÊNCIA DE CONEXÃO" styleClass="pill"/>
+<Label text="Conecte-se com quem importa" wrapText="true" textAlignment="CENTER" styleClass="hero-title"/>
+<Label text="Descubra pessoas, compartilhe momentos e viva experiências reais — tudo em um só lugar." wrapText="true" textAlignment="CENTER" maxWidth="620" styleClass="hero-subtitle"/>
+<fx:include fx:id="login" source="login.fxml"/>
+</VBox></VBox></content></ScrollPane></center>
+<bottom><Label text="Regor · Conexões reais, histórias únicas" maxWidth="Infinity" alignment="CENTER" styleClass="footer"/></bottom>
+</BorderPane>

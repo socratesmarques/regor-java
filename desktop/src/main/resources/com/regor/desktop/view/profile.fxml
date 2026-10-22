@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.regor.desktop.controller.ProfileController" styleClass="page">
+<top><VBox spacing="8" styleClass="page-header"><Label text="Perfil de Usuário" styleClass="page-title"/><Label text="Gerencie sua presença pública e personalização no Regor." styleClass="muted-text"/><Label fx:id="status" wrapText="true" styleClass="status"/></VBox></top>
+<center><TabPane tabClosingPolicy="UNAVAILABLE"><tabs>
+<Tab text="Visualizar"><content><ScrollPane fitToWidth="true"><content><VBox fx:id="preview" alignment="TOP_CENTER" spacing="20" styleClass="content"/></content></ScrollPane></content></Tab>
+<Tab text="Personalizar"><content><ScrollPane fitToWidth="true"><content><VBox spacing="14" styleClass="content">
+<Label text="Informações pessoais" styleClass="card-title"/>
+<Label text="Nome" styleClass="field-label"/><TextField fx:id="displayName" promptText="Seu nome no Regor"/><Label text="Usuário" styleClass="field-label"/><TextField fx:id="username" promptText="usuario"/>
+<Label text="Data de nascimento" styleClass="field-label"/><DatePicker fx:id="birthDate"/>
+<Label text="Localização" styleClass="field-label"/><TextField fx:id="cityField" promptText="São Paulo, SP"/><Label text="Gênero" styleClass="field-label"/><TextField fx:id="gender" promptText="Como você se identifica"/>
+<Label text="Sobre mim" styleClass="field-label"/><TextArea fx:id="bio" wrapText="true" prefRowCount="4" promptText="Seus hobbies e o que busca..."/>
+<Label text="Interesses" styleClass="field-label"/><TextField fx:id="interests" promptText="Música, cinema, gastronomia..."/>
+<HBox spacing="20"><VBox spacing="8" HBox.hgrow="ALWAYS"><Label text="Latitude" styleClass="field-label"/><TextField fx:id="latitude" promptText="Opcional"/></VBox><VBox spacing="8" HBox.hgrow="ALWAYS"><Label text="Longitude" styleClass="field-label"/><TextField fx:id="longitude" promptText="Opcional"/></VBox></HBox>
+<Label text="Coordenadas são privadas e usadas apenas para filtrar distâncias." styleClass="muted-text"/>
+<Button fx:id="save" text="Salvar perfil" onAction="#save" styleClass="primary-button"/>
+<Separator/><Label text="Minhas fotos" styleClass="card-title"/><Label text="Até 6 fotos JPEG ou PNG, com até 5 MB cada." styleClass="muted-text"/>
+<FlowPane fx:id="photos" hgap="16" vgap="16"/><Button fx:id="upload" text="+ Adicionar foto" onAction="#upload" styleClass="secondary-button"/>
+</VBox></content></ScrollPane></content></Tab>
+</tabs></TabPane></center>
+</BorderPane>

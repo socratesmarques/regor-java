@@ -1,5 +1,7 @@
 # Migrations do Regor
 
-Adicione migrations SQL versionadas no formato `V1__descricao.sql` ao definir o primeiro modelo de domínio.
-Não há tabelas de negócio nesta etapa. Não edite migrations já aplicadas.
-Flyway gerencia o esquema; Hibernate apenas valida os mapeamentos existentes.
+- V1 cria as dez tabelas do domínio, chaves estrangeiras, índices e constraints.
+- V2 adiciona a versão de sessão para revogação de JWTs e valida participantes contra o match do chat.
+
+Flyway aplica as migrations ao iniciar. Hibernate usa ddl-auto=validate.
+Crie uma nova migration para evoluir o esquema; não altere migrations já aplicadas.

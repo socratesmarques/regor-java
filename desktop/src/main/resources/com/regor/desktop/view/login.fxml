@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.regor.desktop.controller.AuthController" alignment="CENTER" spacing="16" styleClass="auth-root">
+<VBox maxWidth="420" spacing="12" styleClass="auth-card">
+<Label text="Entrar" styleClass="page-title"/><Label text="Bem-vindo de volta ao Regor" styleClass="muted-text"/>
+<Label text="E-mail" styleClass="field-label"/><TextField fx:id="email" promptText="seu@email.com"/><Label text="Senha" styleClass="field-label"/><PasswordField fx:id="password" promptText="Sua senha"/>
+<Label fx:id="status" wrapText="true" styleClass="status"/><Button fx:id="submit" text="Entrar na plataforma  ›" onAction="#login" maxWidth="Infinity" styleClass="primary-button"/>
+<Hyperlink text="Ainda não tem conta? Cadastre-se" onAction="#openRegister"/>
+<Hyperlink text="Voltar ao início" onAction="#landing"/>
+</VBox></VBox>

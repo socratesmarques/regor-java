@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.regor.desktop.controller.HomeController" styleClass="page">
+<top><HBox alignment="CENTER_LEFT" spacing="20" styleClass="page-header"><Label text="Encontre sua próxima conexão" styleClass="page-title"/><Region HBox.hgrow="ALWAYS"/><Button text="Atualizar" onAction="#refresh" styleClass="secondary-button"/></HBox></top>
+<center><ScrollPane fitToWidth="true"><content><VBox alignment="TOP_CENTER" spacing="16" styleClass="content">
+<VBox fx:id="profile" alignment="CENTER" spacing="12"/><HBox alignment="CENTER" spacing="18">
+<Button fx:id="dislike" text="✕" onAction="#dislike" styleClass="swipe-dislike"><tooltip><Tooltip text="Não curtir"/></tooltip></Button>
+<Button fx:id="superlike" text="★" onAction="#superlike" styleClass="swipe-super"><tooltip><Tooltip text="Super Like"/></tooltip></Button>
+<Button fx:id="like" text="♥" onAction="#like" styleClass="swipe-like"><tooltip><Tooltip text="Curtir"/></tooltip></Button>
+</HBox><Label fx:id="status" wrapText="true" styleClass="status"/></VBox></content></ScrollPane></center>
+<right><VBox prefWidth="240" spacing="18" styleClass="side-panel"><Label text="♥  Seus Matches" styleClass="card-title"/><VBox fx:id="matches" spacing="12"/></VBox></right>
+</BorderPane>

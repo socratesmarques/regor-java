@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.regor.desktop.controller.ChatsController" styleClass="page">
+<left><VBox prefWidth="270" minWidth="240" spacing="16" styleClass="chat-list"><Label text="Chats e Matches" styleClass="page-title"/>
+<TextField fx:id="search" promptText="Buscar nas conversas..." onKeyReleased="#filter"/>
+<ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"><content><VBox fx:id="conversations" spacing="10"/></content></ScrollPane>
+<Button fx:id="moreMatches" text="Carregar mais conversas" onAction="#moreMatches" styleClass="secondary-button"/>
+</VBox></left>
+<center><BorderPane><top><VBox spacing="8" styleClass="page-header"><Label fx:id="title" text="Selecione uma conversa" styleClass="page-title"/><Label text="Conexões que começaram com um match" styleClass="muted-text"/><Label fx:id="status" wrapText="true" styleClass="status"/></VBox></top>
+<center><ScrollPane fx:id="messageScroll" fitToWidth="true"><content><VBox spacing="14" styleClass="content"><Button fx:id="older" text="Carregar mensagens anteriores" onAction="#older" disable="true" styleClass="secondary-button"/><VBox fx:id="messages" spacing="14"/></VBox></content></ScrollPane></center>
+<bottom><HBox spacing="12" styleClass="composer"><TextField fx:id="content" promptText="Digite sua mensagem..." onAction="#send" disable="true" HBox.hgrow="ALWAYS"/><Button fx:id="send" text="Enviar  ›" onAction="#send" disable="true" styleClass="primary-button"/></HBox></bottom>
+</BorderPane></center></BorderPane>
