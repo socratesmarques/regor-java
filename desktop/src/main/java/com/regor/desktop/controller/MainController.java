@@ -12,7 +12,7 @@ public final class MainController extends BaseController {
     public MainController(AppContext context) { super(context); }
     @Override public void show() { task(()->context.api.get("/api/profiles/me"),p->name.setText(p.path("displayName").asText())); }
     @FXML private void navigate(ActionEvent event) { context.navigator.go(((Node)event.getSource()).getUserData().toString()); }
-    @FXML private void logout() { context.navigator.logout(); }
+    @FXML private void logout() { context.navigator.requestLogout(); }
     public void connection(String text) { connection.setText(text); }
     public void content(Parent root,String page) {
         pageContent.getChildren().setAll(root);

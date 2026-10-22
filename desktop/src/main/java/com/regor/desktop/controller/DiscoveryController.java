@@ -40,10 +40,12 @@ public final class DiscoveryController extends BaseController {
                 var card=Ui.person(context,p,260,225);
                 var actions=new HBox(8);
                 for(String kind:List.of("DISLIKE","SUPERLIKE","LIKE")) {
-                    String text=switch(kind){case "LIKE"->"♥";case "SUPERLIKE"->"★";default->"✕";};
-                    var button=Ui.button(text,()->task(()->context.api.post("/api/swipes",Map.of("targetId",p.path("id").asText(),"kind",kind)),
+                    String text=switch(kind){case "LIKE"->"heart";case "SUPERLIKE"->"star";default->"close";};
+                    var button=Ui.button("",()->task(()->context.api.post("/api/swipes",Map.of("targetId",p.path("id").asText(),"kind",kind)),
                         result->{cards.getChildren().remove(card);message(result.path("matchId").isNull()?"Salvo":"É um match! Abra Chats para conversar.");},card),
                         kind.equals("LIKE")?"primary-button":"secondary-button");
+                    button.setGraphic(new com.regor.desktop.view.Icon(text,20));
+                    button.setAccessibleText(kind.equals("LIKE")?"Curtir":kind.equals("SUPERLIKE")?"Super Like":"Não curtir");
                     button.setTooltip(new Tooltip(kind.equals("LIKE")?"Curtir":kind.equals("SUPERLIKE")?"Super Like":"Não curtir"));
                     actions.getChildren().add(button);
                 }

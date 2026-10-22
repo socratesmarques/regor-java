@@ -7,4 +7,5 @@ module com.regor.desktop {
 
     exports com.regor.desktop to javafx.graphics;
     opens com.regor.desktop.controller to javafx.fxml;
+    opens com.regor.desktop.view to javafx.fxml;
 }

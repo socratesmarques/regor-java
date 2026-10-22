@@ -2,9 +2,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import com.regor.desktop.view.Icon?>
 <BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.regor.desktop.controller.DiscoveryController" styleClass="page">
 <top><VBox spacing="16" styleClass="page-header"><HBox alignment="CENTER_LEFT"><Label text="Descobrir Pessoas" styleClass="page-title"/><Region HBox.hgrow="ALWAYS"/><Label fx:id="count" styleClass="muted-text"/></HBox>
-<HBox spacing="10"><TextField fx:id="query" promptText="Buscar por nome, música, culinária..." onAction="#search" HBox.hgrow="ALWAYS"/><Button fx:id="search" text="Buscar" onAction="#search" styleClass="primary-button"/></HBox>
+<HBox spacing="10"><TextField fx:id="query" promptText="Buscar por nome, música, culinária..." onAction="#search" HBox.hgrow="ALWAYS"/><Button fx:id="search" text="Buscar" onAction="#search" styleClass="primary-button"><graphic><Icon name="search" size="18"/></graphic></Button></HBox>
 <Label fx:id="status" wrapText="true" styleClass="status"/></VBox></top>
 <center><ScrollPane fitToWidth="true"><content><FlowPane fx:id="cards" hgap="20" vgap="20" styleClass="content"/></content></ScrollPane></center>
 <right><VBox prefWidth="220" spacing="12" styleClass="side-panel"><Label text="Filtros de descoberta" styleClass="card-title"/>

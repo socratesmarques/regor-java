@@ -50,6 +50,39 @@ class ConnectedViewsIT {
                     return label!=null&&!label.getText().equals("Carregando…");
                 });
                 assertEquals("",fx(()->((Label)scene.lookup("#status")).getText()),page);
+                if(page.equals("profile")) {
+                    fx(()->{
+                        ((TextField)scene.lookup("#displayName")).setText("Nome em edição");
+                        assertTrue(((Label)scene.lookup("#previewName")).getText().startsWith("Nome em edição"));
+                        assertFalse(((Button)scene.lookup("#save")).isDisabled());
+                        Platform.runLater(()->{
+                            for(var window:List.copyOf(javafx.stage.Window.getWindows())) {
+                                var pane=window.getScene().lookup(".dialog-pane");
+                                if(pane instanceof DialogPane dialog) {
+                                    var cancel=dialog.getButtonTypes().stream().filter(b->b.getButtonData()==ButtonBar.ButtonData.CANCEL_CLOSE).findFirst().orElseThrow();
+                                    ((Button)dialog.lookupButton(cancel)).fire();
+                                }
+                            }
+                        });
+                        context.navigator.go("home");
+                        assertNotNull(scene.lookup("#editor"),"Sair foi cancelado; a edição deve continuar aberta");
+                        assertEquals("Nome em edição",((TextField)scene.lookup("#displayName")).getText());
+                        ((Button)scene.lookup("#cancel")).fire();
+                        assertEquals("Alice",((TextField)scene.lookup("#displayName")).getText());
+                        assertTrue(((Button)scene.lookup("#save")).isDisabled());
+                        ((TextArea)scene.lookup("#bio")).setText("Café, trilhas e boas conversas. Sempre pronta para conhecer um lugar novo.");
+                        ((Button)scene.lookup("#save")).fire();return null;
+                    });
+                    await(()->((Label)scene.lookup("#status")).getText().equals("Pronto! Seu perfil foi atualizado."));
+                    assertEquals("Café, trilhas e boas conversas. Sempre pronta para conhecer um lugar novo.",context.api.get("/api/profiles/me").path("bio").asText());
+                    fx(()->{
+                        snapshot(scene,"profile-compact",1024,700);
+                        var editor=scene.lookup("#editor");
+                        assertTrue(editor.localToScene(editor.getBoundsInLocal()).getMinX()>=238);
+                        assertTrue(scene.lookup("#previewPhoto").localToScene(scene.lookup("#previewPhoto").getBoundsInLocal()).getMaxX()<=1024);
+                        return null;
+                    });
+                }
                 // Wait for asynchronous image decoding, independently of the API response.
                 Thread.sleep(350);
                 fx(()->{snapshot(scene,page);return null;});
@@ -70,13 +103,16 @@ class ConnectedViewsIT {
         }finally{Platform.exit();}
     }
     private static void snapshot(Scene scene,String name) throws Exception {
-        Parent root=scene.getRoot();((Region)root).resize(1280,840);root.applyCss();root.layout();
-        WritableImage image=root.snapshot(null,new WritableImage(1280,840));
+        snapshot(scene,name,1280,840);
+    }
+    private static void snapshot(Scene scene,String name,int width,int height) throws Exception {
+        Parent root=scene.getRoot();((Region)root).resize(width,height);root.applyCss();root.layout();
+        WritableImage image=root.snapshot(null,new WritableImage(width,height));
         Path path=Path.of("target","screenshots","connected-"+name+".ppm");Files.createDirectories(path.getParent());
         try(var output=new BufferedOutputStream(Files.newOutputStream(path))) {
-            output.write("P6\n1280 840\n255\n".getBytes(java.nio.charset.StandardCharsets.US_ASCII));
+            output.write(("P6\n"+width+" "+height+"\n255\n").getBytes(java.nio.charset.StandardCharsets.US_ASCII));
             var pixels=image.getPixelReader();
-            for(int y=0;y<840;y++)for(int x=0;x<1280;x++){int a=pixels.getArgb(x,y);output.write((a>>16)&255);output.write((a>>8)&255);output.write(a&255);}
+            for(int y=0;y<height;y++)for(int x=0;x<width;x++){int a=pixels.getArgb(x,y);output.write((a>>16)&255);output.write((a>>8)&255);output.write(a&255);}
         }
     }
 }

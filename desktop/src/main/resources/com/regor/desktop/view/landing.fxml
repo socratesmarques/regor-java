@@ -2,8 +2,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import com.regor.desktop.view.Icon?>
 <BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.regor.desktop.controller.LandingController" styleClass="landing">
-<top><HBox alignment="CENTER_LEFT" spacing="20" styleClass="landing-header"><Label text="♥  Regor" styleClass="brand"/><Region HBox.hgrow="ALWAYS"/><Button text="Criar Conta" onAction="#register" styleClass="secondary-button"/></HBox></top>
+<top><HBox alignment="CENTER_LEFT" spacing="20" styleClass="landing-header"><Label text="Regor" styleClass="brand"><graphic><Icon name="heart" size="18"/></graphic></Label><Region HBox.hgrow="ALWAYS"/><Button text="Criar Conta" onAction="#register" styleClass="secondary-button"/></HBox></top>
 <center><ScrollPane fitToWidth="true" styleClass="transparent"><content>
 <VBox alignment="CENTER" spacing="16" styleClass="hero">
 <VBox alignment="CENTER" maxWidth="760" spacing="16" styleClass="hero-card">

@@ -2,14 +2,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import com.regor.desktop.view.Icon?>
 <BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.regor.desktop.controller.SettingsController" styleClass="page">
 <top><VBox spacing="8" styleClass="page-header"><Label text="Configurações" styleClass="page-title"/><Label fx:id="status" wrapText="true" styleClass="status"/></VBox></top>
 <left><VBox prefWidth="180" spacing="8" styleClass="side-panel">
-<Button text="Conta" userData="0" onAction="#section" styleClass="nav-button"/>
-<Button text="Segurança" userData="1" onAction="#section" styleClass="nav-button"/>
-<Button text="Privacidade" userData="2" onAction="#section" styleClass="nav-button"/>
-<Button text="Aparência" userData="3" onAction="#section" styleClass="nav-button"/>
-<Button text="Notificações" userData="4" onAction="#section" styleClass="nav-button"/>
+<Button text="Conta" userData="0" onAction="#section" styleClass="nav-button"><graphic><Icon name="user" size="18"/></graphic></Button>
+<Button text="Segurança" userData="1" onAction="#section" styleClass="nav-button"><graphic><Icon name="shield" size="18"/></graphic></Button>
+<Button text="Privacidade" userData="2" onAction="#section" styleClass="nav-button"><graphic><Icon name="shield" size="18"/></graphic></Button>
+<Button text="Aparência" userData="3" onAction="#section" styleClass="nav-button"><graphic><Icon name="palette" size="18"/></graphic></Button>
+<Button text="Notificações" userData="4" onAction="#section" styleClass="nav-button"><graphic><Icon name="bell" size="18"/></graphic></Button>
 </VBox></left><center><TabPane fx:id="settingsTabs" styleClass="settings-tabs" tabClosingPolicy="UNAVAILABLE"><tabs>
 <Tab text="Conta"><content><VBox spacing="20" styleClass="content"><Label text="Minha conta" styleClass="page-title"/><Label fx:id="account" wrapText="true" styleClass="muted-text"/><Button text="Editar perfil e fotos" onAction="#editProfile" styleClass="primary-button"/><Label text="Privilégios e benefícios são administrados pelo Regor." styleClass="muted-text"/></VBox></content></Tab>
 <Tab text="Segurança"><content><VBox spacing="16" styleClass="content"><Label text="Redefinir senha de acesso" styleClass="page-title"/>
@@ -24,7 +25,7 @@
 <Label text="Distância máxima (km)" styleClass="field-label"/><Spinner fx:id="maxDistance"/>
 <Label text="Cidade" styleClass="field-label"/><TextField fx:id="cityField" promptText="Todas"/><Label text="Interesse" styleClass="field-label"/><TextField fx:id="interest" promptText="Todos"/><Label text="Gênero" styleClass="field-label"/><TextField fx:id="gender" promptText="Todos"/>
 </VBox></content></ScrollPane></content></Tab>
-<Tab text="Aparência"><content><VBox spacing="20" styleClass="content"><Label text="Tema do aplicativo" styleClass="page-title"/><ComboBox fx:id="theme"/><Label text="Idioma: Português (Brasil)" styleClass="muted-text"/></VBox></content></Tab>
+<Tab text="Aparência"><content><VBox spacing="20" styleClass="content"><Label text="Estilo da navegação" styleClass="page-title"/><ComboBox fx:id="theme"/><Label text="Marrom traz contraste à barra lateral; Marfim mantém tudo claro.&#10;As áreas de conteúdo usam a mesma paleta acolhedora." wrapText="true" styleClass="muted-text"/></VBox></content></Tab>
 <Tab text="Notificações"><content><VBox spacing="20" styleClass="content"><Label text="Suas notificações" styleClass="page-title"/><CheckBox fx:id="matchesNotif" text="Receber notificações de matches"/><CheckBox fx:id="messagesNotif" text="Receber notificações de mensagens"/></VBox></content></Tab>
 </tabs></TabPane></center>
 <bottom><HBox alignment="CENTER_RIGHT" styleClass="pagination"><Button fx:id="save" text="Salvar preferências" onAction="#save" styleClass="primary-button"/></HBox></bottom>

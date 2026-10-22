@@ -13,6 +13,7 @@ public final class Navigator {
     public Navigator(AppContext context,Scene scene) { this.context=context;this.scene=scene;context.navigator=this; }
     public void go(String page) {
         if(!Set.of("landing","login","register").contains(page)&&!context.api.authenticated()) page="login";
+        if(current!=null&&!current.canLeave())return;
         if(current!=null) current.dispose();
         try {
             var loader=loader(page);Parent root=loader.load();current=loader.getController();
@@ -47,6 +48,8 @@ public final class Navigator {
             Platform.runLater(()->{scene.getRoot().pseudoClassStateChanged(javafx.css.PseudoClass.getPseudoClass("light"),mode.equals("claro"));});
         } catch(Exception ignored) {}});
     }
-    public void chat(String id) { go("chats");((ChatsController)current).openChat(id); }
-    public void logout() { context.api.logout();if(shell!=null)shell.dispose();go("landing"); }
+    public void chat(String id) { go("chats");if(current instanceof ChatsController chats)chats.openChat(id); }
+    public void refreshProfile() { if(shell!=null)shell.show(); }
+    public void requestLogout() { if(current==null||current.canLeave())logout(); }
+    public void logout() { if(current!=null){current.dispose();current=null;} context.api.logout();if(shell!=null)shell.dispose();go("landing"); }
 }

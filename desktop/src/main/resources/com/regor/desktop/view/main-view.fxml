@@ -2,14 +2,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import com.regor.desktop.view.Icon?>
 <BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.regor.desktop.controller.MainController" styleClass="app-root">
 <left><VBox prefWidth="238" minWidth="238" spacing="24" styleClass="sidebar">
-<Label text="♥  Regor" styleClass="brand"/><VBox fx:id="navigation" spacing="8"><Button text="⌂  Home" userData="home" onAction="#navigate" maxWidth="Infinity" styleClass="nav-button"/>
-<Button text="◇  Descobrir" userData="discovery" onAction="#navigate" maxWidth="Infinity" styleClass="nav-button"/>
-<Button text="○  Perfil" userData="profile" onAction="#navigate" maxWidth="Infinity" styleClass="nav-button"/>
-<Button text="▤  Chats e Matches" userData="chats" onAction="#navigate" maxWidth="Infinity" styleClass="nav-button"/>
-<Button text="♧  Notificações" userData="notifications" onAction="#navigate" maxWidth="Infinity" styleClass="nav-button"/>
-<Button text="⚙  Configurações" userData="settings" onAction="#navigate" maxWidth="Infinity" styleClass="nav-button"/></VBox>
-<Region VBox.vgrow="ALWAYS"/><VBox spacing="10" styleClass="account-card"><Label fx:id="name" text="Minha conta" styleClass="card-title"/><Label fx:id="connection" text="Conectando…" styleClass="muted-text"/><Button text="Sair da conta" onAction="#logout" styleClass="secondary-button" maxWidth="Infinity"/></VBox>
+<Label text="Regor" styleClass="brand"><graphic><Icon name="heart" size="18"/></graphic></Label><VBox fx:id="navigation" spacing="8"><Button text="Home" userData="home" onAction="#navigate" maxWidth="Infinity" styleClass="nav-button"><graphic><Icon name="home" size="18"/></graphic></Button>
+<Button text="Descobrir" userData="discovery" onAction="#navigate" maxWidth="Infinity" styleClass="nav-button"><graphic><Icon name="compass" size="18"/></graphic></Button>
+<Button text="Meu perfil" userData="profile" onAction="#navigate" maxWidth="Infinity" styleClass="nav-button"><graphic><Icon name="user" size="18"/></graphic></Button>
+<Button text="Chats e Matches" userData="chats" onAction="#navigate" maxWidth="Infinity" styleClass="nav-button"><graphic><Icon name="chat" size="18"/></graphic></Button>
+<Button text="Notificações" userData="notifications" onAction="#navigate" maxWidth="Infinity" styleClass="nav-button"><graphic><Icon name="bell" size="18"/></graphic></Button>
+<Button text="Configurações" userData="settings" onAction="#navigate" maxWidth="Infinity" styleClass="nav-button"><graphic><Icon name="settings" size="18"/></graphic></Button></VBox>
+<Region VBox.vgrow="ALWAYS"/><VBox spacing="10" styleClass="account-card"><Label fx:id="name" text="Minha conta" styleClass="card-title"/><Label fx:id="connection" text="Conectando…" styleClass="muted-text"/><Button text="Sair da conta" onAction="#logout" styleClass="secondary-button" maxWidth="Infinity"><graphic><Icon name="logout" size="18"/></graphic></Button></VBox>
 </VBox></left><center><StackPane fx:id="pageContent"/></center>
 </BorderPane>

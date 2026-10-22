@@ -18,6 +18,10 @@ public final class SettingsController extends BaseController {
         maxAge.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(18,120,60));
         maxDistance.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1,20000,100));
         theme.getItems().setAll("escuro","claro");
+        theme.setConverter(new javafx.util.StringConverter<String>() {
+            @Override public String toString(String value){return "claro".equals(value)?"Marfim":"Marrom";}
+            @Override public String fromString(String value){return "Marfim".equals(value)?"claro":"escuro";}
+        });
     }
     @Override public void show(){
         task(()->context.api.get("/api/preferences"),p->{

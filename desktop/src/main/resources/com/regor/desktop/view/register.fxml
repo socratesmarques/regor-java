@@ -2,9 +2,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import com.regor.desktop.view.Icon?>
 <ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.regor.desktop.controller.AuthController" fitToWidth="true" styleClass="landing">
 <content><VBox alignment="CENTER" spacing="20" styleClass="hero">
-<Label text="♥  Regor" styleClass="brand"/>
+<Label text="Regor" styleClass="brand"><graphic><Icon name="heart" size="18"/></graphic></Label>
 <VBox maxWidth="460" spacing="10" styleClass="auth-card">
 <Label text="Criar conta" styleClass="page-title"/><Label text="Comece sua próxima conexão" styleClass="muted-text"/>
 <Label text="Nome" styleClass="field-label"/><TextField fx:id="displayName" promptText="Seu nome"/><Label text="Usuário" styleClass="field-label"/><TextField fx:id="username" promptText="usuario"/>

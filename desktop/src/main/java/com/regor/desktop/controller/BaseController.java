@@ -15,6 +15,7 @@ public abstract class BaseController {
     protected BaseController(AppContext context) { this.context=context; }
     public void show() {}
     public void event(JsonNode event) {}
+    public boolean canLeave() { return true; }
     public void dispose() { active=false; }
     protected void message(String text) { if(status!=null) status.setText(text); }
     protected <T> void task(Supplier<T> work,Consumer<T> success,Node... controls) {

@@ -1,23 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
+<?import com.regor.desktop.view.Icon?>
 <BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.regor.desktop.controller.ProfileController" styleClass="page">
-<top><VBox spacing="8" styleClass="page-header"><Label text="Perfil de Usuário" styleClass="page-title"/><Label text="Gerencie sua presença pública e personalização no Regor." styleClass="muted-text"/><Label fx:id="status" wrapText="true" styleClass="status"/></VBox></top>
-<center><TabPane tabClosingPolicy="UNAVAILABLE"><tabs>
-<Tab text="Visualizar"><content><ScrollPane fitToWidth="true"><content><VBox fx:id="preview" alignment="TOP_CENTER" spacing="20" styleClass="content"/></content></ScrollPane></content></Tab>
-<Tab text="Personalizar"><content><ScrollPane fitToWidth="true"><content><VBox spacing="14" styleClass="content">
-<Label text="Informações pessoais" styleClass="card-title"/>
-<Label text="Nome" styleClass="field-label"/><TextField fx:id="displayName" promptText="Seu nome no Regor"/><Label text="Usuário" styleClass="field-label"/><TextField fx:id="username" promptText="usuario"/>
-<Label text="Data de nascimento" styleClass="field-label"/><DatePicker fx:id="birthDate"/>
-<Label text="Localização" styleClass="field-label"/><TextField fx:id="cityField" promptText="São Paulo, SP"/><Label text="Gênero" styleClass="field-label"/><TextField fx:id="gender" promptText="Como você se identifica"/>
-<Label text="Sobre mim" styleClass="field-label"/><TextArea fx:id="bio" wrapText="true" prefRowCount="4" promptText="Seus hobbies e o que busca..."/>
-<Label text="Interesses" styleClass="field-label"/><TextField fx:id="interests" promptText="Música, cinema, gastronomia..."/>
-<HBox spacing="20"><VBox spacing="8" HBox.hgrow="ALWAYS"><Label text="Latitude" styleClass="field-label"/><TextField fx:id="latitude" promptText="Opcional"/></VBox><VBox spacing="8" HBox.hgrow="ALWAYS"><Label text="Longitude" styleClass="field-label"/><TextField fx:id="longitude" promptText="Opcional"/></VBox></HBox>
-<Label text="Coordenadas são privadas e usadas apenas para filtrar distâncias." styleClass="muted-text"/>
-<Button fx:id="save" text="Salvar perfil" onAction="#save" styleClass="primary-button"/>
-<Separator/><Label text="Minhas fotos" styleClass="card-title"/><Label text="Até 6 fotos JPEG ou PNG, com até 5 MB cada." styleClass="muted-text"/>
-<FlowPane fx:id="photos" hgap="16" vgap="16"/><Button fx:id="upload" text="+ Adicionar foto" onAction="#upload" styleClass="secondary-button"/>
-</VBox></content></ScrollPane></content></Tab>
-</tabs></TabPane></center>
+  <top><VBox spacing="5" styleClass="profile-header">
+    <Label text="SEU ESPAÇO NO REGOR" styleClass="eyebrow"/>
+    <Label text="Um perfil com a sua essência" styleClass="page-title"/>
+    <Label text="Conte um pouco sobre você. Boas conexões começam por aqui." styleClass="muted-text"/>
+  </VBox></top>
+  <center><ScrollPane fx:id="profileScroll" fitToWidth="true" hbarPolicy="NEVER"><content>
+    <HBox spacing="22" styleClass="profile-columns" alignment="TOP_CENTER">
+      <VBox fx:id="editor" spacing="18" minWidth="400" maxWidth="720" HBox.hgrow="ALWAYS" disable="true">
+        <VBox spacing="14" styleClass="profile-section">
+          <HBox alignment="CENTER_LEFT" spacing="12"><Label text="Suas fotos" styleClass="section-heading"><graphic><Icon name="camera"/></graphic></Label><Region HBox.hgrow="ALWAYS"/><Label fx:id="photoCount" text="0 de 6" styleClass="photo-counter"/></HBox>
+          <Label text="Escolha fotos que mostrem quem você é. A primeira é sua capa." wrapText="true" styleClass="section-caption"/>
+          <FlowPane fx:id="photos" hgap="10" vgap="10"/>
+          <HBox spacing="12" alignment="CENTER_LEFT"><Button fx:id="upload" text="Adicionar foto" onAction="#upload" styleClass="secondary-button"><graphic><Icon name="plus" size="16"/></graphic></Button><Label text="JPG ou PNG · até 5 MB" wrapText="true" styleClass="field-hint"/></HBox>
+          <Label text="As fotos são salvas assim que você as adiciona ou remove." wrapText="true" styleClass="field-hint"/>
+        </VBox>
+        <VBox spacing="16" styleClass="profile-section">
+          <Label text="Sobre você" styleClass="section-heading"><graphic><Icon name="user"/></graphic></Label>
+          <GridPane hgap="16" vgap="14">
+            <columnConstraints><ColumnConstraints percentWidth="50" hgrow="ALWAYS"/><ColumnConstraints percentWidth="50" hgrow="ALWAYS"/></columnConstraints>
+            <VBox spacing="6"><Label text="Nome de exibição" styleClass="field-label"/><TextField fx:id="displayName" promptText="Como você quer ser chamado"/></VBox>
+            <VBox spacing="6" GridPane.columnIndex="1"><Label text="Nome de usuário" styleClass="field-label"/><TextField fx:id="username" promptText="seu_usuario"/></VBox>
+            <VBox spacing="6" GridPane.rowIndex="1"><Label text="Data de nascimento" styleClass="field-label"/><DatePicker fx:id="birthDate" promptText="DD/MM/AAAA" maxWidth="Infinity"/><Label text="Só a sua idade aparece no perfil." wrapText="true" styleClass="field-hint"/></VBox>
+            <VBox spacing="6" GridPane.rowIndex="1" GridPane.columnIndex="1"><Label text="Gênero · opcional" styleClass="field-label"/><TextField fx:id="gender" promptText="Como você se identifica"/></VBox>
+          </GridPane>
+          <VBox spacing="6"><Label text="Cidade" styleClass="field-label"/><TextField fx:id="cityField" promptText="Ex.: São Paulo, SP"/></VBox>
+          <VBox spacing="6"><HBox><Label text="Sua história" styleClass="field-label"/><Region HBox.hgrow="ALWAYS"/><Label fx:id="bioCount" text="0 / 2000" styleClass="field-hint"/></HBox><TextArea fx:id="bio" wrapText="true" prefRowCount="4" promptText="O que te anima? Como seria um dia perfeito para você?"/></VBox>
+        </VBox>
+        <VBox spacing="14" styleClass="profile-section">
+          <Label text="O que faz seu coração bater?" styleClass="section-heading"><graphic><Icon name="heart"/></graphic></Label>
+          <Label text="Selecione sugestões ou escreva seus próprios interesses." wrapText="true" styleClass="section-caption"/>
+          <FlowPane fx:id="interestSuggestions" hgap="8" vgap="8"/>
+          <TextField fx:id="interests" promptText="Separe seus interesses por vírgula"/>
+        </VBox>
+        <TitledPane text="Localização para descoberta · opcional" expanded="false" animated="false" styleClass="location-details">
+          <content><VBox spacing="12"><Label text="Usamos estas coordenadas apenas para calcular distâncias. Elas nunca aparecem no seu perfil público." wrapText="true" styleClass="section-caption"/>
+            <GridPane hgap="16"><columnConstraints><ColumnConstraints percentWidth="50"/><ColumnConstraints percentWidth="50"/></columnConstraints>
+              <VBox spacing="6"><Label text="Latitude" styleClass="field-label"/><TextField fx:id="latitude" promptText="Ex.: -23,55"/></VBox>
+              <VBox spacing="6" GridPane.columnIndex="1"><Label text="Longitude" styleClass="field-label"/><TextField fx:id="longitude" promptText="Ex.: -46,63"/></VBox>
+            </GridPane>
+          </VBox></content>
+        </TitledPane>
+      </VBox>
+      <VBox spacing="14" minWidth="250" prefWidth="260" maxWidth="260">
+        <Label text="PRÉVIA DO SEU PERFIL" styleClass="eyebrow"/>
+        <VBox spacing="12" styleClass="profile-preview">
+          <StackPane fx:id="previewPhoto" minHeight="180"/>
+          <VBox spacing="6"><Label fx:id="previewName" text="Seu nome" wrapText="true" styleClass="preview-name"/><Label fx:id="previewLocation" text="Sua cidade" wrapText="true" styleClass="muted-text"><graphic><Icon name="pin" size="14"/></graphic></Label></VBox>
+          <Label fx:id="previewBio" text="Sua história aparece aqui." wrapText="true" maxWidth="Infinity" styleClass="preview-bio"/>
+          <Label fx:id="previewInterests" text="Seus interesses" wrapText="true" maxWidth="Infinity" styleClass="preview-interests"/>
+        </VBox>
+        <VBox spacing="8" styleClass="profile-tip"><Label text="Seja você" styleClass="field-label"><graphic><Icon name="heart" size="16"/></graphic></Label><Label text="Uma foto nítida e detalhes que você ama tornam mais fácil começar uma conversa." wrapText="true" styleClass="section-caption"/></VBox>
+        <Label text="A prévia acompanha sua edição. Salve para publicar as mudanças." wrapText="true" styleClass="field-hint"/>
+      </VBox>
+    </HBox>
+  </content></ScrollPane></center>
+  <bottom><HBox spacing="14" alignment="CENTER_LEFT" styleClass="save-bar">
+    <VBox spacing="3" HBox.hgrow="ALWAYS"><Label fx:id="saveHint" text="Carregando seu perfil…" styleClass="field-label"/><Label fx:id="status" wrapText="true" styleClass="status"/></VBox>
+    <Button fx:id="cancel" text="Descartar" onAction="#cancel" disable="true" styleClass="secondary-button"/>
+    <Button fx:id="save" text="Salvar alterações" onAction="#save" disable="true" styleClass="primary-button"><graphic><Icon name="check" size="18"/></graphic></Button>
+  </HBox></bottom>
 </BorderPane>

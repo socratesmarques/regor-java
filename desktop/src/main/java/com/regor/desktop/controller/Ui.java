@@ -13,7 +13,7 @@ final class Ui {
     static Label label(String text,String style) { var label=new Label(text);label.getStyleClass().add(style);label.setWrapText(true);return label; }
     static StackPane picture(AppContext context,JsonNode profile,double width,double height) {
         var pane=new StackPane();pane.setPrefSize(width,height);pane.setMinSize(width,height);pane.setMaxSize(width,height);
-        pane.getStyleClass().add("photo");pane.getChildren().add(label("♡","photo-placeholder"));
+        pane.getStyleClass().add("photo");pane.getChildren().add(new com.regor.desktop.view.Icon("camera",42));
         var photos=profile.path("photos");
         if(photos.isArray()&&!photos.isEmpty()) {
             String id=photos.get(0).asText();
@@ -43,6 +43,8 @@ final class Ui {
         return card;
     }
     static Button button(String text,Runnable action,String style) {
-        var button=new Button(text);button.getStyleClass().add(style);button.setOnAction(e->action.run());return button;
+        var button=new Button(text);
+        if(text.endsWith("  ›")){button.setText(text.substring(0,text.length()-3));button.setGraphic(new com.regor.desktop.view.Icon("chat",18));}
+        button.getStyleClass().add(style);button.setOnAction(e->action.run());return button;
     }
 }

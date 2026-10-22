@@ -11,7 +11,7 @@ Aplicação Java 21 com interface JavaFX/FXML/CSS, API REST, JWT e chat em tempo
 - Fotos verificadas no servidor, notificações por destinatário e controles de privacidade.
 - BCrypt, JWT de uma hora, revogação após troca de senha, autorização por recurso e proteção contra mass assignment.
 
-A interface usa a paleta escura rosa/roxa, navegação lateral e organização das telas React. Não carrega mocks nem Firebase nas funcionalidades migradas. Reels, Stories, pagamentos, chamadas de voz/vídeo e importação de dados antigos não fazem parte desta migração.
+A interface usa terracota (#C73532) nas ações, salmão (#F0A39B) nos detalhes, marfim (#FFFEFC) no conteúdo e marrom (#492326) nos textos. Ícones vetoriais seguem uma grade única. A navegação pode usar Marrom ou Marfim nas configurações de aparência. O perfil reúne fotos, informações e interesses com prévia ao vivo, salvamento fixo, descarte de edição e proteção ao navegar com alterações pendentes. Não carrega mocks nem Firebase nas funcionalidades migradas. Reels, Stories, pagamentos, chamadas de voz/vídeo e importação de dados antigos não fazem parte desta migração.
 
 ## Organização
 
